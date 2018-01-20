@@ -26,18 +26,12 @@ class Telescope():
         print(self.x)
         print(self.y)
 
-def list_options(what, label, listname):
+def list_options(location_of_items_to_be_listed, label):
     optionlist = 1
     divider(label)
-    if listname == None:
-        for thing in what:
-            print(optionlist, thing)
-            optionlist += 1
-    else:
-        for thing in what:
-            print(optionlist, thing)
-            listname.append(thing)
-            optionlist += 1
+    for thing in location_of_items_to_be_listed:
+        print(optionlist, thing)
+        optionlist += 1
 
 Tel_1 = Telescope()
 test = [200,26]
@@ -58,20 +52,45 @@ catalog = {
 
 #Populate list with catalog keys so that there is no out-of-orderness due to dictionaies
 selection = []
+items_in_selection = 0
 for key in catalog.keys():
     selection.append(key)
+    items_in_selection += 1
 
-list_options(selection, "Catalogs", None)
+list_options(selection, "Catalogs")
 
-cat_choice = int(input("Select a category by selecting the number: "))
+#Avoids Breaking Program when given bad input.
+while True:
+    cat_choice = (input("Select a category by selecting the number: "))
+    try:
+        cat_choice = int(cat_choice)
+        if cat_choice-1 >= items_in_selection:
+            print("*Please select a valid number*")
+            continue
+        else: break
+    except: print("*Please enter a number*")
+
 current = selection[cat_choice-1]
 
 list_of_objects = []
+number_of_items = 0
+for obj in catalog[current]:
+    list_of_objects.append(obj)
+    number_of_items += 1
 
-list_options(catalog[current], f"Entering the {current} catalog", list_of_objects)
+list_options(catalog[current], f"Entering the {current} catalog")
 
-print(list_of_objects)
-obj_choice = int(input("Select an object by selecting the number: "))
+print(list_of_objects) #Solely for development, taking out late
+
+while True:
+    try:
+        obj_choice = int(input("Select an object by selecting the number: "))
+        if obj_choice-1 >= number_of_items:
+            print("*Please select a valid number*")
+            continue
+        else: break
+    except: print("*Enter a number*")
+
 obj = list_of_objects[(obj_choice - 1)]
 
 coor = catalog[current].get(obj)
