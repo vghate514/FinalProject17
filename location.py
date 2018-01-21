@@ -1,1 +1,2 @@
-latitude, longitude = 40.618627, -74.361144
+lat = 40.618627 #related to declination
+lon = -74.361144 #related to right acension

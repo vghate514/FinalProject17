@@ -1,6 +1,9 @@
-#Import Lists from separate documents
+#Import Lists from separate documents and math
 from planets import *
 from stars import *
+from location import *
+from date_time import *
+import math as m
 
 #Formatting function
 def divider(message):
@@ -93,9 +96,38 @@ while True:
 
 obj = list_of_objects[(obj_choice - 1)]
 
-coor = catalog[current].get(obj)
+coor_values = catalog[current].get(obj)
 
-print(coor)
+#Star Celestial Coordinates
+RA = coor_values[0]
+DEC = coor_values[1]
+
+#Calculating Hour Angle of Star
+HA = lst_time - RA
+while HA not in range(361):
+    if HA < 0:
+        HA += 360
+        continue
+    elif HA > 360:
+        HA -= 360
+        continue
+    else: continue
+
+#Calculating ALT of Star
+sin_ALT = m.sin(RA)*m.sin(lat)+m.cos(DEC)*m.cos(lat)*m.cos(HA)
+ALT = m.asin(sin_ALT)
+
+#Calculating AZ of Star
+cos_A = (m.sin(DEC) - m.sin(ALT)*m.sin(lat))/(m.cos(ALT)*m.cos(lat))
+A = m.acos(cos_A)
+if ALT < 0:
+    AZ = A
+else:
+    AZ = ALT - A
+
+print(ALT)
+print(AZ)
+#print(coor)
 
 """"Tel_1.go_to(test)
 Tel_1.report
