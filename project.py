@@ -46,16 +46,12 @@ def program():
             "Stars":{
                 "Sirius":sirius,
                 "Vega":vega,
-                "Polaris":polaris,
-                "Shedir":shedir,
                 "Shaula":shaula,
-                "Scheat":scheat,
                 "Saiph":saiph,
                 "Rigel":rigel,
                 "Regulus":regulus,
                 "Rasalhague":rasalhague,
                 "Rasalgethi":rasalgethi,
-                "Proxima Centauri":proxima_centauri,
                 "Procyon":procyon
             }
         }
@@ -88,7 +84,9 @@ def program():
             list_of_objects.append(obj)
             number_of_items += 1
 
+        print(" ")
         list_options(catalog[current], f"Entering the {current} catalog")
+        print(" ")
 
         #Prevents bad user input while selecting an object from catalog
         while True:
@@ -119,28 +117,37 @@ def program():
             elif HA > 360:
                 HA -= 360
                 continue
-            else: continue
+            else: break
+
+        #Python can only handle radians so here we convert from degrees to radians
+        HA = m.radians(HA)
+        RA = m.radians(RA)
+        DEC = m.radians(DEC)
+        lat1 = m.radians(lat)
 
         #Calculating ALT of Star
-        sin_ALT = m.sin(RA)*m.sin(lat)+m.cos(DEC)*m.cos(lat)*m.cos(HA)
+        sin_ALT = m.sin(RA)*m.sin(lat1)+m.cos(DEC)*m.cos(lat1)*m.cos(HA)
         ALT = m.asin(sin_ALT)
-
+        #Python can only handle radians so here we convert from degrees to radians
+        alt = m.radians(ALT)
         #Calculating AZ of Star
-        cos_A = (m.sin(DEC) - m.sin(ALT)*m.sin(lat))/(m.cos(ALT)*m.cos(lat))
+        cos_A = ((m.sin(DEC) - m.sin(alt)*m.sin(lat1))/(m.cos(alt)*m.cos(lat1)))
         A = m.acos(cos_A)
         if ALT < 0:
             AZ = A
         else:
             AZ = ALT - A
-
+        AZ = m.degrees(AZ)
+        ALT = m.degrees(alt)
         da_wae = [AZ, ALT]
 
         #Gives Telescope the altitude and azimuth in degrees of the object, adjusted for location
-        Tel_1.goto(da_wae)
+        Tel_1.go_to(da_wae)
 
-        print(f"Your telescope is pointing at {obj}.\n{Tel_1.report()}")
-
-
+        print(f"Your telescope is pointing at {obj}.")
+        Tel_1.report()
+"""
+"""
 #Continuous Loop to allow user to run program again without physically re-opening the file.
 while True:
     program()

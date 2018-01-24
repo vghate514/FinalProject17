@@ -1,7 +1,7 @@
 import datetime
 import time
 from location import *
-
+"""
 #Years since UNIX Time Epoch
 year = int(datetime.datetime.now().strftime("%y"))
 #Months into year
@@ -9,7 +9,7 @@ month_init = int(datetime.datetime.now().strftime("%m"))
 
 #while Loop counts number of days since Jan 1 of current year
 m_count = 0
-days_passed =
+days_passed = 0
 while m_count <= month_init-1:
     if m_count == 2:
         if year % 4 == 0:
@@ -52,4 +52,10 @@ while lst_time not in range(0,361):
     elif lst_time > 360:
         lst_time -= 360
         continue
-    else: continue
+    else: continue"""
+
+#Below values as placeholder
+days = 6598.5
+decimal_hours = 12
+lst_time = 100.46 + 0.985647*days + lon + 15*decimal_hours
+
