@@ -1,6 +1,6 @@
-The program I have made is designed to convert celestial coordinates of stars (and other objects) into simple altitude and azimuth coordinates in degrees
-It was planned to make use of APIs to retrieve information regarding location of , however, due to technical difficulties and lack of time, the information
-has been predetermined in the separate files in the folder FinalProject17. Maybe in the future.
+The program I have made is designed to convert celestial coordinates of stars (and other objects) into simple altitude and azimuth coordinates in degrees.
+It was planned to make use of APIs to retrieve information regarding location of both the telescope and the stars, however, due to technical difficulties and lack of time, the information
+has been predetermined in the separate files in the folder FinalProject17.
 
 I have designed the program such that new catalogs of objects and stars can easily be added to the list of catalogs in the event I wish to add more.
 
@@ -15,7 +15,7 @@ Calculations:
 http://www.stargazing.net/kepler/altaz.html
 -All calculations I found online used J2000 time in their calculations as opposed to Python's UNIX time which starts from the epoch in 1970. I have
 attempted to solve this problem in the file date_time.py in which I convert UNIX time to J2000 time and from there I used the calculations from the linked
-website to calculate the Local Sidereal Time
+website to calculate the Local Sidereal Time. The accuracy of the time can be improved with the use of an API.
 
 Star Catalog:
 http://www.astronexus.com/hyg
