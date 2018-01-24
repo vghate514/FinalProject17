@@ -4,7 +4,7 @@ from location import *
 from date_time import *
 import math as m
 
-#Formatting function
+#Formatting function, for aesthetic
 def divider(message):
     print('-'*20)
     print(message)
@@ -28,6 +28,8 @@ class Telescope():
         print(f"AZ: {self.x}")
         print(f"ALT: {self.y}")
 
+"""The function below is for user interface and backend organization. The function prints out a list of all the objects with corresponding number choices,
+and adds the items to a list in order to create a constant and reliable method of calling objects using numbers."""
 def list_options(location_of_items_to_be_listed, label):
     optionlist = 1
     divider(label)
@@ -44,10 +46,19 @@ def program():
             "Stars":{
                 "Sirius":sirius,
                 "Vega":vega,
-                "Polaris":polaris
-                }
-
+                "Polaris":polaris,
+                "Shedir":shedir,
+                "Shaula":shaula,
+                "Scheat":scheat,
+                "Saiph":saiph,
+                "Rigel":rigel,
+                "Regulus":regulus,
+                "Rasalhague":rasalhague,
+                "Rasalgethi":rasalgethi,
+                "Proxima Centauri":proxima_centauri,
+                "Procyon":procyon
             }
+        }
 
         #Populate list with catalog keys so that there is no out-of-orderness due to dictionaies
         selection = []
@@ -130,7 +141,7 @@ def program():
         print(f"Your telescope is pointing at {obj}.\n{Tel_1.report()}")
 
 
-#Continuous Loop to allow user to run program again without exiting.
+#Continuous Loop to allow user to run program again without physically re-opening the file.
 while True:
     program()
     cont = (input("Type 'e' to exit. Press any other key to continue: ")).lower()
