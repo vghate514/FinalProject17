@@ -1,7 +1,7 @@
 import datetime
 import time
 from location import *
-"""
+
 #Years since UNIX Time Epoch
 year = int(datetime.datetime.now().strftime("%y"))
 #Months into year
@@ -52,10 +52,5 @@ while lst_time not in range(0,361):
     elif lst_time > 360:
         lst_time -= 360
         continue
-    else: continue"""
-
-#Below values as placeholder
-days = 6598.5
-decimal_hours = 12
-lst_time = 100.46 + 0.985647*days + lon + 15*decimal_hours
+    else: break
 

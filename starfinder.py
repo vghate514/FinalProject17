@@ -41,6 +41,7 @@ def list_options(location_of_items_to_be_listed, label):
     for thing in location_of_items_to_be_listed:
         print(optionlist, thing)
         optionlist += 1
+    print("")
 
 Tel_1 = Telescope()
 
@@ -91,7 +92,6 @@ def program():
 
         print(" ")
         list_options(catalog[current], f"Entering the {current} catalog")
-        print(" ")
 
         #Prevents bad user input while selecting an object from catalog
         while True:
@@ -149,7 +149,7 @@ def program():
         #Gives Telescope the altitude and azimuth in degrees of the object, adjusted for location
         Tel_1.go_to(da_wae)
 
-        print(f"Your telescope is pointing at {obj}.")
+        print(f"\nYour telescope is pointing at {obj}.\n")
         Tel_1.report()
 """
 """
@@ -157,7 +157,9 @@ def program():
 while True:
     program()
     cont = (input("Type 'e' to exit. Press any other key to continue: ")).lower()
+    print("")
     if cont == 'e':
+        clear()
         print("Have a good day!")
         print("""⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⠶⣿⣭⡧⡤⣤⣻⣛⣹⣿⣿⣿⣶⣄
 ⢀⢀⢀⢀⢀⢀⢀⢀⢀⣼⣊⣤⣶⣷⣶⣧⣤⣽⣿⣿⣿⣿⣿⣿⣷
