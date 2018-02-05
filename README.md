@@ -26,3 +26,6 @@ There are only a few stars in star.py solely to show proof of concept. More star
 Explanation of Celestial Coordinates and Altitude/Azimuth:
 http://astro.unl.edu/naap/motion1/cec_units.html
 -A valuable resource for explaining how the sky is observed and marked.
+
+Presentation and flowchart:
+https://docs.google.com/presentation/d/1QtWgBbMuUF6MRJJCI5WVTiNy5luRx_h3CJccLFVjhSg/edit?usp=sharing
